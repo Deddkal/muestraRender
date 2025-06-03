@@ -22,7 +22,7 @@ public class SecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/h2-console/**").permitAll() // acceso libre a H2
+                        .requestMatchers("/h2-console/**", "/api/ping").permitAll() // acceso libre a H2
                         .requestMatchers("/api/products/**").hasAnyRole("USER", "ADMIN")
                         .requestMatchers("/api/categories/**").hasAnyRole("USER", "ADMIN")
                         //.requestMatchers(HttpMethod.GET,"/api/products/**").hasAuthority("USER")
